@@ -1,7 +1,6 @@
 # read data
 setwd('UCI HAR Dataset/train')
 
-
 # Merges the training and the test sets to create one data set.
 X_train<-read.table('X_train.txt')
 
@@ -36,4 +35,5 @@ subject_test <- read.table('subject_test.txt', header=F)
 subject <- rbind(subject_train,subject_test)
 dtf <- cbind(X_required,subject)
 
-averageByRowname<- aggregate(. ~ V1, data=dtf, FUN=mean)
+averageByRowname <- aggregate(. ~ V1, data=dtf, FUN=mean)
+write.table(x=averageByRowname, file="tidyDataSet.txt", row.names=F)
